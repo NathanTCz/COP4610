@@ -1,0 +1,14 @@
+#include "types.h"
+
+#ifdef USER
+enum procstate { UNUSED, EMBRYO, SLEEPING, RUNNABLE, RUNNING, ZOMBIE };
+#endif
+
+struct uproc {
+  int pid;
+  int ppid;
+  enum procstate state;
+  uint sz;
+  char name[16];
+};
+

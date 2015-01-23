@@ -1,0 +1,49 @@
+COP4610: Introduction to Operating Systems
+Project 3:
+Producer-consumer Problem
+
+Nathan Cazell
+4/4/14
+
+This small program demonstrates the solution to the producer-consumer
+problem. The program utilizes the Pthread library with separate threads
+running each producer and consumer service. Making use of two semaphores,
+one a counting semaphore (used to limit the number of threads that can
+modify the buffer) and a binary semaphore (used to mark the buffer full),
+also a mutex to lock the critical section of each producer/consumer.
+
+Below is an example of the output:
+
+  producer produced 1681692777
+  producer produced 1957747793
+  consumer consumed 1681692777
+  producer produced 1649760492
+  producer produced 1189641421
+  consumer consumed 1957747793
+  producer produced 783368690
+  consumer consumed 1649760492
+  producer produced 1967513926
+  producer produced 1540383426
+  producer produced 1303455736
+  consumer consumed 1189641421
+  producer produced 521595368
+  consumer consumed 783368690
+  producer produced 861021530
+  consumer consumed 1967513926
+  producer produced 2145174067
+  consumer consumed 1540383426
+  consumer consumed 1303455736
+  producer produced 1315634022
+  producer produced 1369133069
+  consumer consumed 521595368
+  Finishing up...
+  producer produced 2089018456
+  consumer consumed 861021530
+  producer produced 1656478042
+
+
+The program outputs a number that the producer creates in the buffer, then
+then a consumer will delete that item from the buffer.
+
+When the SIGINT signal is caught the program triggers a deferred cancellation of
+the threads. The threads finish the critical section then terminate.
